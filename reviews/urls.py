@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
+
+from reviewapp import views
 
 urlpatterns = [
     url(r'^$', include('reviewapp.urls')),
@@ -22,6 +25,10 @@ urlpatterns = [
     url(r'^reviews/', include('reviewapp.urls')),#anything that starts 'reviewapp/' gets passed
     #to the urls file in the reviewapp folder
     # url(r'^details/)', include 
-
+    # url(r'^login/', include('reviewapp.urls')),
+    # url(r'^login/$', views.login, name='login'),
     url(r'^ratings/', include('star_ratings.urls')),
+    url(r'^login/$', auth_views.login, name='login'),
+    url(r'^logout/$', auth_views.logout, name='logout'),
+    
 ]

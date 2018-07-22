@@ -1,0 +1,10 @@
+{% extends "reviewapp/layout.html" %}
+
+{% block content %}
+  <h2 style="font-family: GistRoughLightThree" class="center-align"><strong>Login</strong></h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button style="font-family: GistRoughLightThree; background-color:rgb(68, 68, 68); color:white" class="btn" type="submit">Login</button>
+  </form>
+{% endblock %}

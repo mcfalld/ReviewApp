@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="grey lighten-1" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    {% load static %}
+    <link rel="stylesheet" href=" {% static "stylesheet.css" %}" type="text/css">
 
-    <title>This is my First attempt</title>
+    <title style="font-family: 'GistRoughLightThree';">This is my First attempt</title>
 </head>
-<body>
+<body style="background-color:c8beb7">
     <header class="containter center-align">
-        <h1>Review App</h1>
+        <a style="color:black" href="/reviews"><h1 style="font-family: GistRoughLightThree">Review App</h1></a>
     </header>
 
 <div class="container">
@@ -18,7 +20,8 @@
 {% endblock %}
 
 <hr/>
-<a style="display:block" class="right-align" href="/admin">Admin Page</a>
+<a style="display:block; width:50%; float:right; font-family: Didact Gothic" class="right-align" href="/admin">Admin Page</a>
+<a style="display:block; width: 50%; float:left; font-family: Didact Gothic" class="left-align" href="/login">User Login</a>
 </div>
 
 </body>

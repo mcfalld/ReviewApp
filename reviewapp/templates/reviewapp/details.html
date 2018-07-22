@@ -2,9 +2,9 @@
 
 {% block content %}
 
-<h3 class="center-align red lighten-5">{{review.title}}</h3> {# gets title from views.py #}
+<h3 style="font-family: GistRoughLightThree; background-color:#A0892C" class="center-align">{{review.title}}</h3> {# gets title from views.py #}
 
-<div class="card">
+<div style="color:#483E37" class="card">
     <div class="card-content">
         {{review.body}}
     </div>
@@ -12,5 +12,5 @@
         {{review.submitted_on}}
     </div>
 </div>
-<a class="btn" href="/reviews">Go Back</a>
+<a style="background-color:rgb(68, 68, 68); color:white; font-family:GistRoughLightThree" class="btn" href="/reviews">Go Back</a>
 {% endblock %}

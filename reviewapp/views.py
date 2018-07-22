@@ -1,7 +1,8 @@
 from django.shortcuts import render
-#from django.http import HttpResponse
+from django.http import HttpResponse
 
 from .models import Reviews
+from .models import Login
 
 # Create your views here.
 def index(request):
@@ -24,3 +25,14 @@ def details(request, id):
     }
 
     return render(request, 'reviewapp/details.html', context)
+
+
+def login(request):
+    
+    # login = Login.objects.all()
+
+    # context = {
+    #     'login': login
+    # }
+
+    return render(request, 'reviewapp/login.html')

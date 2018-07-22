@@ -1,5 +1,7 @@
 from django.db import models
 from datetime import datetime
+from django import forms
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -15,3 +17,8 @@ class Reviews(models.Model):
         return self.title
     class Meta:
         verbose_name_plural = "Reviews"
+
+class Login(models.Model):
+    User_Name       = User()
+    Password        = models.CharField(max_length=30)
+    
