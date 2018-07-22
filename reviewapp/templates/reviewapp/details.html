@@ -1,0 +1,16 @@
+{% extends 'reviewapp/layout.html' %}
+
+{% block content %}
+
+<h3 class="center-align red lighten-5">{{review.title}}</h3> {# gets title from views.py #}
+
+<div class="card">
+    <div class="card-content">
+        {{review.body}}
+    </div>
+    <div class="card-action">
+        {{review.submitted_on}}
+    </div>
+</div>
+<a class="btn" href="/reviews">Go Back</a>
+{% endblock %}

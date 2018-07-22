@@ -1,0 +1,13 @@
+{% extends 'reviewapp/layout.html' %}
+
+{% block content %}
+
+<h3 class="center-align red lighten-5">{{title}}</h3> {# gets title from views.py #}
+
+<ul class="collection">
+    {% for review in reviews %}
+        <li class="collection-item"><a href="/reviews/details/{{review.id}}">{{review.title}}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
