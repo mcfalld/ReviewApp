@@ -36,3 +36,17 @@ def login(request):
     # }
 
     return render(request, 'reviewapp/login.html')
+
+def profile(request):
+    review = Reviews.objects.all()[:25]
+
+    context = {
+        'review' : review
+    }
+
+    return render(request, 'reviewapp/profile.html', context)
+
+def logout(request):
+    
+    
+    return render(request, 'reviewapp/logout.html')
