@@ -31,7 +31,7 @@ urlpatterns = [
     # url(r'^login/$', views.login, name='login'),
     url(r'^ratings/', include('star_ratings.urls')),
     url(r'^login/$', auth_views.login, name='login'),
-    url(r'^logout/$', auth_views.logout, name='logout'),
+    url(r'^logged_out/$', views.logout, name='logout'),
     url(r'^profile/$', include('reviewapp.urls'), name='profile'),
     # url(r'^profil/$', au)
     url('accounts/profile/',

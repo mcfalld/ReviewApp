@@ -126,3 +126,4 @@ STATIC_URL = '/reviewapp/templates/styles/'
 # LOGIN_REDIRECT_URL = '/reviewapp/urls'
 # /home/mcfall/reviews/reviewapp/templates/accounts/profile.html
 # /home/mcfall/reviews/reviewapp/views.py
+LOGOUT_REDIRECT_URL = '/reviewapp/templates/registration/logout.html'

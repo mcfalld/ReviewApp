@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib import auth
 
 from .models import Reviews
 from .models import Login
@@ -11,9 +12,26 @@ def index(request):
     reviews = Reviews.objects.all()[:25]
 
     context = {
-        'title': 'Latest Reviews',
-        'reviews': reviews
-    }
+            'title': 'Latest Reviews',
+            'reviews': reviews
+        }
+    
+    
+    from ipware import get_client_ip
+
+    ip, is_routable = get_client_ip(request)
+#     if ip is None:
+#    # Unable to get the client's IP address
+#         return None
+#     else:
+#     # We got the client's IP address
+#         if is_routable:
+#         # The client's IP address is publicly routable on the Internet
+#             return ip
+#         else:
+#         # The client's IP address is private
+#             return None
+
 
     return render(request, 'reviewapp/index.html', context)
 
@@ -35,7 +53,7 @@ def login(request):
     #     'login': login
     # }
 
-    return render(request, 'reviewapp/login.html')
+    return render(request, 'registration/login.html')
 
 def profile(request):
     review = Reviews.objects.all()[:25]
@@ -48,5 +66,6 @@ def profile(request):
 
 def logout(request):
     
-    
-    return render(request, 'reviewapp/logout.html')
+    auth.logout(request)
+    return render(request, 'registration/logged_out.html')
+

@@ -9,7 +9,7 @@ class Reviews(models.Model):
     # rating          = models.
     title           = models.CharField(max_length=64)
     body            = models.TextField(max_length=10000)
-    ipAddress       = models.GenericIPAddressField(blank=True, null=True)
+    ipAddress       = models.GenericIPAddressField(blank=True, null=True) #possible add , editable=False
     submitted_on    = models.DateTimeField(default=datetime.now)
     company         = models.CharField(max_length = 200, blank=False)
     reviewer_Email  = models.EmailField(max_length=250)
