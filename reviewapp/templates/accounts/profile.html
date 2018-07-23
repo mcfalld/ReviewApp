@@ -1,7 +1,9 @@
-{% extends "reviewapp/layout.html" %}
-
+{% extends 'reviewapp/layout.html' %}
 
 {% block content %}
+<!-- <h3>Hello test</h3> -->
+<h3 style="font-family: GistRoughLightThree; background-color:#A0892C" class="center-align">Your Reviews</h3> {# gets title from views.py #}
+
 {% if user.is_authenticated %}
   You are logged in as {{ user }}.
   <a href="/logged_out">Click here to log out.</a>
@@ -9,4 +11,16 @@
   You are not logged in.
   <a href="/login">Click here to log in.</a>
 {% endif %}
+
+<!-- <h3 style="font-family: GistRoughLightThree; background-color:#A0892C" class="center-align">{{headtitle}}</h3> {# gets title from views.py but isnt working#} -->
+<!-- 
+<ul style="color:#483E37" class="collection">
+    {% for review in reviews %}
+        <li style="font-family:'Didact Gothic'; color:#483E37" class="collection-item"><a style="color:#483E37" href="/reviews/details/{{review.id}}">{{review.title}}</a></li>
+    {% endfor %}
+</ul> -->
+
+
+
+
 {% endblock %}

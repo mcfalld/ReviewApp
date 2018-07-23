@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<h3 style="font-family: GistRoughLightThree; background-color:#A0892C" class="center-align">Login</h3> {# gets title from views.py #}
+
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
@@ -10,6 +12,6 @@
 {% csrf_token %}
 {{ form.as_p }}
 
-<input type="submit" value="login" />
+<input type="submit" value="Login" />
 </form>
 {% endblock %}
