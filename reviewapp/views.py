@@ -15,24 +15,6 @@ def index(request):
             'title': 'Latest Reviews',
             'reviews': reviews
         }
-    
-    
-    # from ipware import get_client_ip
-
-    # ip, is_routable = get_client_ip(request)
-#     if ip is None:
-#    # Unable to get the client's IP address
-#         return None
-#     else:
-#     # We got the client's IP address
-#         if is_routable:
-#         # The client's IP address is publicly routable on the Internet
-#             return ip
-#         else:
-#         # The client's IP address is private
-#             return None
-
-
     return render(request, 'reviewapp/index.html', context)
 
 def details(request, id):
@@ -57,11 +39,11 @@ def login(request):
 
 def profile(request):
     # review = Reviews.objects.filter(owner=get_current_user())
-    reviews = Reviews.objects.all()[:25]
+    reviews = Reviews.objects.filter(user=request.user)[:25]
 
     context = {
-        'headtitle'  : 'Your Reviews',
-        'reviews' : reviews
+        'title': 'Your Reviews',
+        'reviews': reviews
     }
 
     return render(request, 'accounts/profile.html', context)
@@ -71,3 +53,13 @@ def logout(request):
     auth.logout(request)
     return render(request, 'registration/logged_out.html')
 
+def create_review(request):
+
+    reviews = Reviews.objects.all()[:20]
+
+    context = {
+        'title': 'Your Reviews',
+        'reviews': reviews
+    }
+
+    return render(request, 'accounts/createReview.html', context)

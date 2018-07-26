@@ -36,5 +36,8 @@ urlpatterns = [
     # url(r'^profil/$', au)
     url('accounts/profile/',
          TemplateView.as_view(template_name='accounts/profile.html'),
-         name='profile'),
+         name='profile'),   
+    url('accounts/createReview/',
+         TemplateView.as_view(template_name='accounts/createReview.html'),
+         name='create_review'),   
 ]
