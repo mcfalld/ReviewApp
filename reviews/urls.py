@@ -40,4 +40,11 @@ urlpatterns = [
     url('accounts/createReview/',
          TemplateView.as_view(template_name='accounts/createReview.html'),
          name='create_review'),   
+    # url(r'^registration/create_user',
+    #      TemplateView.as_view(template_name='registration/create_user.html'),
+    #      name='create_user'),  
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+    # url(r'^registration/create_user/$', include('registration.backends.simple.urls')),
+
+
 ]

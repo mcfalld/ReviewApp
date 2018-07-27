@@ -63,3 +63,15 @@ def create_review(request):
     }
 
     return render(request, 'accounts/createReview.html', context)
+
+def create_user(request):
+
+    user_info = Login.objects.all()
+
+    context = {
+        'user_info' : user_info,
+        'title'     : Login.User_Name
+
+    }
+
+    return render(request, 'registration.backends.simple.urls', context)

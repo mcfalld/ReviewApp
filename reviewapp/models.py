@@ -13,6 +13,7 @@ from django.contrib.auth.models import User
 class Login(models.Model):
     User_Name       = User()
     Password        = models.CharField(max_length=30)
+    Email           = models.EmailField()
     def __str__(self):
         return self.User_Name
     

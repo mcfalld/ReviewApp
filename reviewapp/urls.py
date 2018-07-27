@@ -8,6 +8,6 @@ urlpatterns = [
     # url(r'^login/$', views.login, name='login')
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^createReview/$', views.create_review, name='createReview'),
-    url(r'^accounts/createReview/$', views.create_review, name='createReview')
+    # url(r'^accounts/register$', , name='createReview'),
     
 ]
