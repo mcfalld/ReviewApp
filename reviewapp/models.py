@@ -28,10 +28,11 @@ class Reviews(models.Model):
     submitted_on    = models.DateTimeField(default=datetime.now)
     company         = models.CharField(max_length = 200, blank=False)
     reviewer_Email  = models.EmailField(max_length=250)
-    readonly_fields = [ipAddress]
+    # readonly_fields = [ipAddress]
     user            = models.ForeignKey(Login, on_delete=models.CASCADE, null=True, blank=False)
 
     def __str__(self):
         return self.title
+        
     class Meta:
         verbose_name_plural = "Reviews"

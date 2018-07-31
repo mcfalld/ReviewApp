@@ -6,7 +6,7 @@
 
 <ul style="color:#483E37" class="collection">
     {% for review in reviews %}
-        <li style="font-family:'Didact Gothic'; color:#483E37" class="collection-item"><a style="color:#483E37" href="/reviews/details/{{review.id}}">{{review.title}}</a></li>
+        <li style="font-family:'Didact Gothic'; color:#483E37" class="collection-item"><a style="color:#483E37" href="{% url 'details' review.id %}">{{review.title}}</a></li>
     {% endfor %}
 </ul>
 

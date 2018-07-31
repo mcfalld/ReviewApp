@@ -1,0 +1,14 @@
+{% extends "reviewapp/layout.html" %}
+
+
+{% block content %}
+
+<h3 style="font-family: GistRoughLightThree; background-color:#A0892C" class="center-align">Hi <a href="{% url 'profile' %}">{{user}}</a>, Write a review Here: </h3> {# gets title from views.py #}
+
+<form method="post" action="{% url 'profile' %}">
+{% for field in form %}
+    {{field}}
+{% endfor %}
+</form>
+
+{%endblock%} 

@@ -9,15 +9,10 @@
 	<p>Your username and password didn't match. Please try again.</p>
 	{% endif %}
 	
-	<form style="color:black" method="post" action="{% url 'login' %}">
+	<form method="post" action="{% url 'login' %}">
 	{% csrf_token %}
-	{% comment %} {{ form.as_p }} {% endcomment %}
-	{% for field in form %}
-        <div style="color:black" class="fieldWrapper">
-            {{ field.errors }}
-            {{ field.label_tag }}: {{ field }}
-        </div>
-    {% endfor %}
+	{{ form.as_p }}
+	
 	<input type="submit" value="Login" />
 	</form>
 	<br>

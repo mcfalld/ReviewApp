@@ -1,0 +1,17 @@
+{% extends 'reviewapp/layout.html' %}
+
+{% block content %}
+  <h3 style="font-family: GistRoughLightThree; background-color:#A0892C" class="center-align">Sign up</h3>
+  <form method="post" action = "{% url 'login' %}" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <label style="color:black" for="username">Username:</label>
+    <input type ="text" id="username">
+    <label style="color:black" for="email">Email:</label>
+    <input type="email" id="email">
+    <label style="color:black" for="password">Password:</label>
+    <input type="password" id="password">
+    <button type="submit" value="signUp">Sign up</button>
+  </form>
+{% endblock %}

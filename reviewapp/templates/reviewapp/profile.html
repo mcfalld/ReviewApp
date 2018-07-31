@@ -5,7 +5,7 @@
 <h3 style="font-family: GistRoughLightThree; background-color:#A0892C" class="center-align">Your Reviews</h3> {# gets title from views.py #}
 
 {% if user.is_authenticated %}
-  You are logged in as {{ user }}.
+  You are logged in as <strong>{{ user }}</strong>.
   <a href="/logged_out">Click here to log out.</a>
 {% else %}
   You are not logged in.
@@ -13,13 +13,16 @@
 {% endif %}
 <br>
 <!-- <h3 style="font-family: GistRoughLightThree; background-color:#A0892C" class="center-align">{{headtitle}}</h3> {# gets title from views.py but isnt working#} -->
-
-<ul style="color:#483E37" class="collection">
-    {% for review in reviews %}
-        <li style="font-family:'Didact Gothic'; color:#483E37" class="collection-item"><a style="color:#483E37" href="/reviews/details/{{review.id}}">{{review.title}}</a></li>
-    {% endfor %}
-</ul> 
-
+{% if reviews %}
+  <ul style="color:#483E37" class="collection">
+      {% for review in reviews %}
+          <li style="font-family:'Didact Gothic'; color:#483E37" class="collection-item"><a style="color:#483E37" href="/reviewapp/details/{{review.id}}">{{review.title}}</a></li>
+      {% endfor %}
+  </ul> 
+{% else %}
+  <h3>Its a little lonely in here try <a href="/createReview">making your first review!</a></h3>
+{% endif %}
+<br>
 {{user}}, if you would like to post your own review <a href="/createReview">Click Here</a>
 
 

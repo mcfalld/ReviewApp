@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'reviewapp',
+    'reviewapp.apps.ReviewappConfig',
     'star_ratings',
     # 'ratings',
     'django.contrib.admin',

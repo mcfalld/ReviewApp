@@ -17,34 +17,42 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.views.generic import TemplateView
+from django.conf.urls import url
+# from reviewapp.core import views as core_views
 # from django.urls import include, path
 
 from reviewapp import views
+# from reviewapp/views import logout
 
 urlpatterns = [
     url(r'^$', include('reviewapp.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^reviews/', include('reviewapp.urls')),#anything that starts 'reviewapp/' gets passed
+    url(r'^reviews/', include('reviewapp.urls')),#anything that starts 'reviews/' gets passed
     #to the urls file in the reviewapp folder
     # url(r'^details/)', include 
-    # url(r'^login/', include('reviewapp.urls')),
-    # url(r'^login/$', views.login, name='login'),
     url(r'^ratings/', include('star_ratings.urls')),
-    url(r'^login/$', auth_views.login, name='login'),
+    # url(r'^login/$', auth_views.login, name='login'),
     url(r'^logged_out/$', views.logout, name='logout'),
-    url(r'^profile/$', include('reviewapp.urls'), name='profile'),
+    # url(r'^profile/$', include('reviewapp.urls'), name='profile'),
     # url(r'^profil/$', au)
-    url('accounts/profile/',
-         TemplateView.as_view(template_name='accounts/profile.html'),
-         name='profile'),   
-    url('accounts/createReview/',
-         TemplateView.as_view(template_name='accounts/createReview.html'),
+    url('profile/',
+         TemplateView.as_view(template_name='reviewapp/profile.html'),
+         name='profile'),
+    url(r'^login/$', auth_views.login,
+        {'template_name':'reviewapp/login.html'},
+        name='login'),   
+    url('createReview/',
+         TemplateView.as_view(template_name='reviewapp/createReview.html'),
          name='create_review'),   
-    # url(r'^registration/create_user',
-    #      TemplateView.as_view(template_name='registration/create_user.html'),
-    #      name='create_user'),  
     url(r'^accounts/', include('registration.backends.simple.urls')),
     # url(r'^registration/create_user/$', include('registration.backends.simple.urls')),
+    # url(r'^signup/$', views.signup, name='signup'),
+    url('signup/',
+         TemplateView.as_view(template_name='reviewapp/signup.html'),
+         name='signup'),
+    # url('create_user/',
+    #      TemplateView.as_view(template_name='reviewapp/signup.html'),
+    #      name='create_user'),
 
 
 ]
