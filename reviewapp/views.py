@@ -13,26 +13,38 @@ from .models import Reviews
 from .models import Login
 
 # Create your views here.
-def index(request):
-    #return HttpResponse("hello from reviewapp")
-    # template = loader.get_template('reviewapp/index.html')
-    reviews = Reviews.objects.all()
+class IndexView(generic.ListView):
+    template_name = 'reviewapp/index.html'
 
-    context = {
-            'title': 'Latest Reviews',
-            'reviews': reviews
-        }
-    return render(request, 'reviewapp/index.html', context)
-    # return HttpResponse(template.render(context, request))
+    def get_queryset(self):
+        return Reviews.objects.all()
+    
 
-def details(request, id):
-    review = Reviews.objects.get(id=id)
+class DetailView(generic.DetailView):
+    model = Reviews
+    template_name = 'reviewapp/details.html'
 
-    context = {
-        'review': review
-    }
 
-    return render(request, 'reviewapp/details.html', context)
+# def index(request):
+#     #return HttpResponse("hello from reviewapp")
+#     # template = loader.get_template('reviewapp/index.html')
+#     reviews = Reviews.objects.all()
+
+#     context = {
+#             'title': 'Latest Reviews',
+#             'reviews': reviews
+#         }
+#     return render(request, 'reviewapp/index.html', context)
+#     # return HttpResponse(template.render(context, request))
+
+# def details(request, id):
+#     review = Reviews.objects.get(id=id)
+
+#     context = {
+#         'review': review
+#     }
+
+#     return render(request, 'reviewapp/details.html', context)
 
 
 def login(request):

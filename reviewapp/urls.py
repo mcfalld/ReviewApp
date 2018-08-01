@@ -4,9 +4,9 @@ from . import views
 # from reviewapp.core import views as core_views
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'), #'reviews/' -> meaning there is nothing after the '/'    # checks views.py file for a method named index
-    url(r'^reviews/$', views.index, name='reviews'), #'reviews/' -> meaning there is nothing after the '/'    # checks views.py file for a method named index
-    url(r'^details/(?P<id>\d+)/$', views.details, name='details'),
+    url(r'^$', views.IndexView.as_view(), name='index'), #'reviews/' -> meaning there is nothing after the '/'    # checks views.py file for a method named index
+    url(r'^reviews/$', views.IndexView.as_view(), name='reviews'), #'reviews/' -> meaning there is nothing after the '/'    # checks views.py file for a method named index
+    url(r'^details/(?P<pk>\d+)/$', views.DetailView.as_view(), name='details'),
     # url(r'^login/$', views.login, name='login')
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^reviewapp/createReview/$', views.create_review, name='createReview'),
