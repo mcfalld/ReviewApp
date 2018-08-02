@@ -2,19 +2,24 @@
 
 <h3 style="font-family: GistRoughLightThree; background-color:#A0892C" class="center-align">Sign Up</h3> {# gets title from views.py #}
 
-{% for field in form %}
+{% block content %}
 
     <div class="form-group">
         <div>
             <span class="red-text">{{ field.error }}</span>
 
         </div>
-        <label class="card-panel col s2 pull-s8">{{ field.label_tag }}</label>
-        <div class="col s8 push-s2">{{ field }}</div>
-
-
+        <div class="col s3 push-s9 card-panel white">
+            <form action=""  method="post" >
+                {% csrf_token %}
+                {% include 'reviewapp/form-template.html' %}
+                <div class="form-group">
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            </form>
+    
+        </div>
 
     </div>
 
-
-{% endfor %}
+{% endblock %}
