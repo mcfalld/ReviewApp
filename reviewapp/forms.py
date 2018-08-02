@@ -6,8 +6,6 @@ from ipware import get_client_ip
 
 from .models import Reviews
 
-# from django.db import models
-
 
 class CustomUserCreationForm(forms.Form):
     username = forms.CharField(label='Enter Username', min_length=4, max_length=150)
@@ -56,6 +54,7 @@ class UserForm(forms.ModelForm):
         fields = ['username', 'email', 'password']
 
 class UserReview(forms.ModelForm):
+    # title = forms.CharField(label="Title: ", max_length=64)
 
     class Meta:
         model = Reviews

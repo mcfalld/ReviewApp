@@ -153,7 +153,7 @@ class UserFormView(View):
 
 class ReviewCreate(View):
     form_class = UserReview
-    template_name = 'reviewapp/createReview.html'
+    template_name = 'reviewapp/review_form.html'
 
     def get(self, request):
         form = self.form_class(None)
@@ -162,17 +162,18 @@ class ReviewCreate(View):
     def post(self, request):
         form = self.form_class(request.POST)
 
-        # if form.is_valid():
-        review = form.save(commit=False)
+        if form.is_valid():
+            review = form.save(commit=False)
 
-        title = form.cleaned_data['title']
-        body  = form.cleaned_data['body'] 
-        submitted_on = form.cleaned_data['submitted_on']
-        company = form.cleaned_data['company']
-        reviewer_Email = form.cleaned_data['reviewer_Email']
-        user = form.cleaned_data['user']
+            title = form.cleaned_data['title']
+            body  = form.cleaned_data['body'] 
+            submitted_on = form.cleaned_data['submitted_on']
+            company = form.cleaned_data['company']
+            reviewer_Email = form.cleaned_data['reviewer_Email']
+            user = form.cleaned_data['user']
 
-        review.save()
+            review.save()
+            # return redirect('reviewapp/details/<pk>')
 
 # class CreateUser(CreateView):
 #     model = Login

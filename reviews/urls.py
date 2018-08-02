@@ -42,6 +42,7 @@ urlpatterns = [
         {'template_name':'reviewapp/login.html'},
         name='login'),
     url(r'^reviewapp/review-create/$', views.ReviewCreate.as_view(), name='review-create'),
+    url(r'^reviewapp/register/$', views.UserFormView.as_view(), name='register'),
     # url('createReview/',
     #      TemplateView.as_view(template_name='reviewapp/createReview.html'),
     #      name='create_review'),   

@@ -16,11 +16,13 @@ class Login(models.Model):
     user_name       = forms.CharField(max_length=30)
     password        = forms.CharField(max_length=50, widget = forms.PasswordInput)
     email           = forms.EmailField()
-    def __str__(self):
-        return str(self.user_name)
+
     
     def get_absolute_url(self):
         return reverse("/details", kwargs={"pk": self.pk})
+    
+    def __str__(self):
+        return str(self.user_name)
     
 
 
@@ -36,8 +38,13 @@ class Reviews(models.Model):
     # readonly_fields = [ipAddress]
     user            = models.ForeignKey(Login, on_delete=models.CASCADE, null=True, blank=False)
 
+
+    def get_absolute_url(self):
+        return reverse("details", kwargs={"pk": self.pk})
+
     def __str__(self):
         return str(self.title)
+
         
     class Meta:
         verbose_name_plural = "Reviews"

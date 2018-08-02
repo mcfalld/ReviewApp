@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^reviewapp/review-create/$', views.ReviewCreate.as_view(), name='review-create'),
     url(r'^reviews/reviewapp/review-create/$', views.ReviewCreate.as_view(), name='review-create'),
-    url(r'^reviewapp/signup/$', views.UserFormView.as_view(), name='signup'),
+    url(r'^reviewapp/register/$', views.UserFormView.as_view(), name='register'),
     # url(r'')
     # url(r'^accounts/register$', , name='createReview'),
     # url(r'^signup/$', views.signup, name='signup'),

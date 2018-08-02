@@ -1,16 +1,19 @@
-{%extends 'reviewapp/layout.html'%}
+{% extends 'reviewapp/layout.html' %}
 
-{%load staticfiles%}
+<!-- {% load staticfiles %} -->
 
 {% block content %}
 
+<h3 style="font-family: GistRoughLightThree; background-color:#A0892C" class="center-align">Hi <a href="{% url 'profile' %}">{{user}}</a>, Write a review Here: </h3> {# gets title from views.py #}
+
 <div class="container">
 
-    <div class="col s4 pull-s6 card-panel white">
-        <form action="" method="POST">
+    <div class="col s3 push-s9 card-panel white">
+        <form action=""  method="post" >
             {% csrf_token %}
-            {% include 'reviewapp/form-template.html'}
+            {% include 'reviewapp/form-template.html' %}
             <div class="form-group">
+                <!-- <input type="submit" class="btn" value="Submit"/> -->
                 <button type="submit" class="btn">Submit</button>
             </div>
         </form>
@@ -20,6 +23,4 @@
 
 </div>
 
-
-
-{% end block %}
+{% endblock %}
