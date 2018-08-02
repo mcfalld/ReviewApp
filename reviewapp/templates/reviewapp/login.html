@@ -1,20 +1,23 @@
 
-	{% extends "reviewapp/layout.html" %}
-	
-	{% block content %}
-	
-	<h3 style="font-family: GistRoughLightThree; background-color:#A0892C" class="center-align">Login</h3> {# gets title from views.py #}
-	
-	{% if form.errors %}
-	<p>Your username and password didn't match. Please try again.</p>
-	{% endif %}
-	
-	<form method="post" action="{% url 'login' %}">
-	{% csrf_token %}
-	{{ form.as_p }}
-	
-	<input type="submit" value="Login" />
-	</form>
-	<br>
-	OR create a new user by clicking <a href="/signup/">Here.</a>
-	{% endblock %}
+{% extends "reviewapp/layout.html" %}
+
+{% load staticfiles %}
+
+
+{% block content %}
+
+<h3 style="font-family: GistRoughLightThree; background-color:#A0892C" class="center-align">Login</h3> {# gets title from views.py #}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+{{ form.as_p }}
+
+<input type="submit" value="Login" />
+</form>
+<br>
+OR create a new user by clicking <a href="/signup/">Here.</a>
+{% endblock %}

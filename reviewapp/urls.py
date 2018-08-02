@@ -1,6 +1,8 @@
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
+
 from . import views
+
 # from reviewapp.core import views as core_views
 
 urlpatterns = [
@@ -9,9 +11,10 @@ urlpatterns = [
     url(r'^details/(?P<pk>\d+)/$', views.DetailView.as_view(), name='details'),
     # url(r'^login/$', views.login, name='login')
     url(r'^profile/$', views.profile, name='profile'),
-    url(r'^reviewapp/createReview/$', views.create_review, name='createReview'),
+    url(r'^reviewapp/review-create/$', views.ReviewCreate.as_view(), name='review-create'),
+    url(r'^reviews/reviewapp/review-create/$', views.ReviewCreate.as_view(), name='review-create'),
     url(r'^reviewapp/signup/$', views.UserFormView.as_view(), name='signup'),
-
+    # url(r'')
     # url(r'^accounts/register$', , name='createReview'),
     # url(r'^signup/$', views.signup, name='signup'),
     

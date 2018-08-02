@@ -1,16 +1,16 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib import auth
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login, authenticate
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
+from django.template import loader
 from django.views import generic
 from django.views.generic import View
-from .forms import UserForm, UserReview
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from ipware import get_client_ip
-from django.template import loader
 
-from .models import Reviews
-from .models import Login
+from .forms import UserForm, UserReview
+from .models import Login, Reviews
 
 # Create your views here.
 class IndexView(generic.ListView):
@@ -47,15 +47,15 @@ class DetailView(generic.DetailView):
 #     return render(request, 'reviewapp/details.html', context)
 
 
-def login(request):
+# def login(request):
     
-    # login = Login.objects.all()
+#     # login = Login.objects.all()
 
-    # context = {
-    #     'login': login
-    # }
+#     # context = {
+#     #     'login': login
+#     # }
 
-    return render(request, 'reviewapp/login.html')
+#     return render(request, 'reviewapp/login.html')
 
 def profile(request):
     reviews = Reviews.objects.all() #user=request.user
@@ -126,7 +126,7 @@ def create_user(request):
 
 class UserFormView(View):
     form_class = UserForm
-    template_name = 'reviewapp/signup.html'
+    template_name = 'reviewapp/registration_form.html'
 
     def get(self, request):
         form= self.form_class(None)
@@ -151,7 +151,7 @@ class UserFormView(View):
                     login(request, user)
                     return redirect('reviewapp/profile')
 
-class ReviewForm(View):
+class ReviewCreate(View):
     form_class = UserReview
     template_name = 'reviewapp/createReview.html'
 
@@ -174,4 +174,6 @@ class ReviewForm(View):
 
         review.save()
 
-    
+# class CreateUser(CreateView):
+#     model = Login
+#     fields = ['user_name', 'password', 'email']

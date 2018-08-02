@@ -1,7 +1,9 @@
-from django.db import models
 from datetime import datetime
+
 from django import forms
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
+from django.db import models
 
 # from.middleware import get_current_user
 # from . import views
@@ -11,11 +13,14 @@ from django.contrib.auth.models import User
 
 
 class Login(models.Model):
-    User_Name       = User()
-    Password        = models.CharField(max_length=30)
-    Email           = models.EmailField()
+    user_name       = forms.CharField(max_length=30)
+    password        = forms.CharField(max_length=50, widget = forms.PasswordInput)
+    email           = forms.EmailField()
     def __str__(self):
-        return self.User_Name
+        return str(self.user_name)
+    
+    def get_absolute_url(self):
+        return reverse("/details", kwargs={"pk": self.pk})
     
 
 
@@ -32,7 +37,7 @@ class Reviews(models.Model):
     user            = models.ForeignKey(Login, on_delete=models.CASCADE, null=True, blank=False)
 
     def __str__(self):
-        return self.title
+        return str(self.title)
         
     class Meta:
         verbose_name_plural = "Reviews"

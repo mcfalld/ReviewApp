@@ -13,15 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.views.generic import TemplateView
-from django.conf.urls import url
+from reviewapp import views
+
 # from reviewapp.core import views as core_views
 # from django.urls import include, path
 
-from reviewapp import views
 # from reviewapp/views import logout
 
 urlpatterns = [
@@ -33,23 +33,25 @@ urlpatterns = [
     url(r'^ratings/', include('star_ratings.urls')),
     # url(r'^login/$', auth_views.login, name='login'),
     url(r'^logged_out/$', views.logout, name='logout'),
-    # url(r'^profile/$', include('reviewapp.urls'), name='profile'),
+    url(r'^create-review/$', include('reviewapp.urls'), name='profile'),
     # url(r'^profil/$', au)
     url('profile/',
          TemplateView.as_view(template_name='reviewapp/profile.html'),
          name='profile'),
     url(r'^login/$', auth_views.login,
         {'template_name':'reviewapp/login.html'},
-        name='login'),   
-    url('createReview/',
-         TemplateView.as_view(template_name='reviewapp/createReview.html'),
-         name='create_review'),   
+        name='login'),
+    url(r'^reviewapp/review-create/$', views.ReviewCreate.as_view(), name='review-create'),
+    # url('createReview/',
+    #      TemplateView.as_view(template_name='reviewapp/createReview.html'),
+    #      name='create_review'),   
     url(r'^accounts/', include('registration.backends.simple.urls')),
     # url(r'^registration/create_user/$', include('registration.backends.simple.urls')),
     # url(r'^signup/$', views.signup, name='signup'),
-    url('signup/',
-         TemplateView.as_view(template_name='reviewapp/signup.html'),
-         name='signup'),
+    # url('signup/',
+    #      TemplateView.as_view(template_name='reviewapp/signup.html'),
+    #      name='signup'),
+    # url(r'^signup/', views.CreateUser.as_view(), name = 'signup'),
     # url('create_user/',
     #      TemplateView.as_view(template_name='reviewapp/signup.html'),
     #      name='create_user'),

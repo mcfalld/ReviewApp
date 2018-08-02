@@ -8,9 +8,15 @@
     {% load static %}
     <link rel="stylesheet" href=" {% static "stylesheet.css" %}" type="text/css">
 
-    <title style="font-family: 'GistRoughLightThree';">This is my First attempt</title>
+    {% block css %}
+
+    
+
+    {% endblock %}
+
+    <title style="font-family:'GistRoughLightThree'">This is my First attempt</title>
 </head>
-<body style="background-color:c8beb7">
+<body style="background-color:#c8beb7">
     <header class="containter center-align">
         <a style="color:black" href="/reviews"><h1 style="font-family: GistRoughLightThree">Review App</h1></a>
     </header>

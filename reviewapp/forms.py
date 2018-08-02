@@ -1,9 +1,11 @@
+from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django import forms
 from django.core.exceptions import ValidationError
 from ipware import get_client_ip
+
 from .models import Reviews
+
 # from django.db import models
 
 
